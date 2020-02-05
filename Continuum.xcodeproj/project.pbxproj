@@ -12,6 +12,9 @@
 		6502CE5A23EB676200A57856 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6502CE5823EB676200A57856 /* Main.storyboard */; };
 		6502CE5C23EB676300A57856 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6502CE5B23EB676300A57856 /* Assets.xcassets */; };
 		6502CE5F23EB676300A57856 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6502CE5D23EB676300A57856 /* LaunchScreen.storyboard */; };
+		6502CE6D23EB685700A57856 /* PostListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6502CE6C23EB685700A57856 /* PostListTableViewController.swift */; };
+		6502CE6F23EB69A800A57856 /* PostDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6502CE6E23EB69A800A57856 /* PostDetailTableViewController.swift */; };
+		6502CE7123EB6A1800A57856 /* AddPostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6502CE7023EB6A1800A57856 /* AddPostTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		6502CE5B23EB676300A57856 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6502CE5E23EB676300A57856 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6502CE6023EB676300A57856 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6502CE6C23EB685700A57856 /* PostListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListTableViewController.swift; sourceTree = "<group>"; };
+		6502CE6E23EB69A800A57856 /* PostDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailTableViewController.swift; sourceTree = "<group>"; };
+		6502CE7023EB6A1800A57856 /* AddPostTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +91,8 @@
 		6502CE6823EB677F00A57856 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6502CE6B23EB683F00A57856 /* Model Controllers */,
+				6502CE6A23EB683400A57856 /* View Controllers */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -94,6 +102,23 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		6502CE6A23EB683400A57856 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6502CE6C23EB685700A57856 /* PostListTableViewController.swift */,
+				6502CE6E23EB69A800A57856 /* PostDetailTableViewController.swift */,
+				6502CE7023EB6A1800A57856 /* AddPostTableViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		6502CE6B23EB683F00A57856 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Model Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,7 +192,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6502CE6D23EB685700A57856 /* PostListTableViewController.swift in Sources */,
+				6502CE7123EB6A1800A57856 /* AddPostTableViewController.swift in Sources */,
 				6502CE5323EB676200A57856 /* AppDelegate.swift in Sources */,
+				6502CE6F23EB69A800A57856 /* PostDetailTableViewController.swift in Sources */,
 				6502CE5523EB676200A57856 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
