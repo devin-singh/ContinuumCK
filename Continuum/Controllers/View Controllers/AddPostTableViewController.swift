@@ -12,25 +12,36 @@ class AddPostTableViewController: UITableViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var captionTextField: UITextField!
-    @IBOutlet weak var selectImageButton: UIButton!
     
-
+    // MARK: - Properties
+    
+    var selectedImage: UIImage?
+    
+    // MARK: - Lifecycle Functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        selectImageButton.setTitle("Select Image", for: .normal)
-        postImageView.image = nil
+        super.viewDidDisappear(animated)
         captionTextField.text = ""
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toPhotoSelectorVC" {
+            let photoSelector = segue.destination as? PhotoSelectorViewController
+            photoSelector?.delegate = self
+        }
     }
     
     // MARK: - Actions
     
     @IBAction func addPostPressed(_ sender: Any) {
-        guard let image = postImageView.image, let caption = captionTextField.text, !caption.isEmpty else { return }
+        guard let image = selectedImage, let caption = captionTextField.text, !caption.isEmpty else { return }
         
         PostController.shared.createPostWith(image: image, caption: caption) { (_) in
             
@@ -39,33 +50,14 @@ class AddPostTableViewController: UITableViewController {
         tabBarController?.selectedIndex = 0
     }
     
-    @IBAction func selectImagePressed(_ sender: Any) {
-        selectImageButton.setTitle("", for: .normal)
-        
-        presentImageAlertController()
-//        let image = UIImage(named: "sun")
-//        postImageView.image = image
-    }
-    
     @IBAction func cancelButtonPressed(_ sender: Any) {
         tabBarController?.selectedIndex = 0
     }
     
-    // MARK: - Private functions
-    
-    private func presentImageAlertController() {
-        let alertController = UIAlertController(title: "Add an image", message: "Where do you want to add an image from?", preferredStyle: .alert)
-        let galleryAction = UIAlertAction(title: "Gallery", style: .default) { (_) in
-            
-        }
-        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (_) in
-          
-          
-        }
-        alertController.addAction(galleryAction)
-        alertController.addAction(cameraAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
+}
 
+extension AddPostTableViewController: PhotoSelectorViewControllerDelegate {
+    func photoSelectorViewControllerSelected(image: UIImage) {
+        selectedImage = image
+    }
 }
