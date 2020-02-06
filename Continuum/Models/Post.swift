@@ -32,4 +32,17 @@ class Post {
     }
 }
 
-
+extension Post: SearchableRecord {
+    func matches(searchTerm: String) -> Bool {
+        if caption.lowercased().contains(searchTerm.lowercased()) {
+          return true
+        } else {
+          for comment in comments {
+            if comment.matches(searchTerm: searchTerm.lowercased()) {
+              return true
+            }
+          }
+        }
+        return false
+    }
+}

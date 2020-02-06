@@ -41,12 +41,30 @@ class AddPostTableViewController: UITableViewController {
     
     @IBAction func selectImagePressed(_ sender: Any) {
         selectImageButton.setTitle("", for: .normal)
-        let image = UIImage(named: "sun")
-        postImageView.image = image
+        
+        presentImageAlertController()
+//        let image = UIImage(named: "sun")
+//        postImageView.image = image
     }
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
         tabBarController?.selectedIndex = 0
+    }
+    
+    // MARK: - Private functions
+    
+    private func presentImageAlertController() {
+        let alertController = UIAlertController(title: "Add an image", message: "Where do you want to add an image from?", preferredStyle: .alert)
+        let galleryAction = UIAlertAction(title: "Gallery", style: .default) { (_) in
+            
+        }
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (_) in
+          
+          
+        }
+        alertController.addAction(galleryAction)
+        alertController.addAction(cameraAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
 
