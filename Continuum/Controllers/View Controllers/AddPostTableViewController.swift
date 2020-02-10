@@ -43,11 +43,18 @@ class AddPostTableViewController: UITableViewController {
     @IBAction func addPostPressed(_ sender: Any) {
         guard let image = selectedImage, let caption = captionTextField.text, !caption.isEmpty else { return }
         
-        PostController.shared.createPostWith(image: image, caption: caption) { (_) in
+        PostController.shared.createPostWith(photo: image, caption: caption) { (post) in
+            if let _ = post {
+                // Goes back to the post list view
+                DispatchQueue.main.async {
+                    self.tabBarController?.selectedIndex = 0
+                }
+            } else {
+                print("Error creating post")
+            }
             
         }
-        // Goes back to the post list view
-        tabBarController?.selectedIndex = 0
+        
     }
     
     @IBAction func cancelButtonPressed(_ sender: Any) {

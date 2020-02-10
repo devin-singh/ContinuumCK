@@ -24,6 +24,13 @@ class PostListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         postListSearchBar.delegate = self
+        PostController.shared.fetchPosts { (post) in
+            if let _ = post {
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

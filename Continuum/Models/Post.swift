@@ -24,6 +24,7 @@ class Post {
     var caption: String
     var comments: [Comment]
     var recordID: CKRecord.ID
+    var commentCount: Int
     var photo: UIImage? {
         get {
             guard let photoData = photoData else { return nil }
@@ -49,11 +50,12 @@ class Post {
         }
     }
     
-    init(photo: UIImage, caption: String, timestamp: Date = Date(), comments: [Comment] = [], recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString)) {
+    init(photo: UIImage, caption: String, timestamp: Date = Date(), comments: [Comment] = [], recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString), commentCount: Int = 0) {
         self.caption = caption
         self.timestamp = timestamp
         self.comments = comments
         self.recordID = recordID
+        self.commentCount = commentCount
         self.photo = photo
     }
     
@@ -62,10 +64,12 @@ class Post {
             guard let caption = ckRecord[PostConstants.captionKey] as? String,
                 let timestamp = ckRecord[PostConstants.timestampKey] as? Date,
                 let photoAsset = ckRecord[PostConstants.photoKey] as? CKAsset,
+                let commentCount = ckRecord[PostConstants.commentCountKey] as? Int,
                 let fileURL = photoAsset.fileURL
                 else { return nil }
             
             let photoData = try Data(contentsOf: fileURL)
+            self.commentCount = commentCount
             self.caption = caption
             self.timestamp = timestamp
             self.photoData = photoData

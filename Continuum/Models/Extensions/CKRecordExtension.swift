@@ -10,11 +10,12 @@ import CloudKit
 import UIKit
 
 extension CKRecord {
-    convenience init?(post: Post) {
+    convenience init(post: Post) {
         self.init(recordType: PostConstants.typeKey, recordID: post.recordID)
         self.setValue(post.caption, forKey: PostConstants.captionKey)
         self.setValue(post.timestamp, forKey: PostConstants.timestampKey)
         self.setValue(post.imageAsset, forKey: PostConstants.photoKey)
+        self.setValue(post.commentCount, forKey: PostConstants.commentCountKey)
     }
     
     convenience init(comment: Comment) {
