@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -191,6 +192,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="a0Z-mw-1Kb"/>
                     <connections>
+                        <outlet property="followPostButton" destination="Av6-UW-cJq" id="jZo-HK-jwi"/>
                         <outlet property="postImageView" destination="qII-5W-IKf" id="g3M-Ob-XIg"/>
                     </connections>
                 </tableViewController>
@@ -373,6 +375,7 @@
                             <constraint firstItem="Eju-S9-GBD" firstAttribute="height" secondItem="Www-BD-sRE" secondAttribute="height" id="uww-cS-phM"/>
                             <constraint firstItem="UrD-Uy-QWy" firstAttribute="height" secondItem="Eju-S9-GBD" secondAttribute="height" id="w7f-iI-VjB"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="CPL-0N-jvc"/>
                     </view>
                     <connections>
                         <outlet property="addPostImageView" destination="Eju-S9-GBD" id="w8Y-Tf-abv"/>
